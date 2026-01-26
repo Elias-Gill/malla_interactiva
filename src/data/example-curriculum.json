@@ -1,0 +1,31 @@
+{
+    "career": "Ingeniería Informática",
+    "subjects": [
+        {
+            "id": "MAT1",
+            "name": "Matemática I",
+            "semester": 1,
+            "description": "Álgebra básica y trigonometría."
+        },
+        {
+            "id": "FIS1",
+            "name": "Física I",
+            "semester": 1,
+            "description": "Cinemática y dinámica."
+        },
+        {
+            "id": "MAT2",
+            "name": "Matemática II",
+            "semester": 2,
+            "description": "Cálculo diferencial e integral.",
+            "prerequisites": ["MAT1"]
+        },
+        {
+            "id": "FIS2",
+            "name": "Física II",
+            "semester": 2,
+            "description": "Electromagnetismo.",
+            "prerequisites": ["FIS1", "MAT1"]
+        }
+    ]
+}
