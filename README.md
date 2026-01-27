@@ -204,15 +204,6 @@ Una vez creado el PR, un maintainer revisará y aprobará el merge si todo está
 Si hay correcciones necesarias, se te pedirá en un comentario dentro del PR.
 Realiza los cambios en tu fork y súbelos; el PR se actualizará automáticamente.
 
-## Convenciones de nombres
-
-| Elemento | Convención | Ejemplo |
-|----------|------------|---------|
-| Archivo JSON | `SIGLAS.json` (mayúsculas) | `IIN.json`, `LCIK.json` |
-| ID de carrera | Siglas (igual al archivo) | `IIN`, `LCIK` |
-| ID de materia | Preferiblemente código corto único | `MAT-101`, `PROG-I` |
-| Nombre de materia | Nombre completo | `Matemática I` |
-
 ## Notas importantes
 
 - **No modifiques** `graph_lib.js` a menos que sepas lo que haces
