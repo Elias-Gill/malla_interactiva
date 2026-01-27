@@ -1,31 +1,176 @@
 {
     "career": "Ingeniería Informática",
-    "subjects": [
-        {
-            "id": "MAT1",
-            "name": "Matemática I",
-            "semester": 1,
-            "description": "Álgebra básica y trigonometría."
+    "semesters": {
+        "1": {
+            "MAT1": {
+                "name": "Matemática I",
+                "desc": "Álgebra lineal básica, matrices, determinantes y sistemas de ecuaciones.",
+                "pre": []
+            },
+            "FIS1": {
+                "name": "Física I",
+                "desc": "Mecánica newtoniana, cinemática, dinámica y trabajo-energía.",
+                "pre": []
+            },
+            "PROG1": {
+                "name": "Programación I",
+                "desc": "Introducción a la programación estructurada en C o Python.",
+                "pre": []
+            },
+            "INTRO": {
+                "name": "Introducción a la Informática",
+                "desc": "Historia, hardware, software básico y conceptos fundamentales.",
+                "pre": []
+            }
         },
-        {
-            "id": "FIS1",
-            "name": "Física I",
-            "semester": 1,
-            "description": "Cinemática y dinámica."
+        "2": {
+            "MAT2": {
+                "name": "Matemática II",
+                "desc": "Cálculo diferencial e integral de una variable.",
+                "pre": ["MAT1"]
+            },
+            "FIS2": {
+                "name": "Física II",
+                "desc": "Electricidad, magnetismo y ondas.",
+                "pre": ["FIS1", "MAT1"]
+            },
+            "PROG2": {
+                "name": "Programación II",
+                "desc": "Programación orientada a objetos, estructuras de datos básicas.",
+                "pre": ["PROG1"]
+            },
+            "LOGI": {
+                "name": "Lógica Simbólica",
+                "desc": "Proposicional, predicados, demostraciones y tablas de verdad.",
+                "pre": []
+            }
         },
-        {
-            "id": "MAT2",
-            "name": "Matemática II",
-            "semester": 2,
-            "description": "Cálculo diferencial e integral.",
-            "prerequisites": ["MAT1"]
+        "3": {
+            "MAT3": {
+                "name": "Matemática III",
+                "desc": "Cálculo multivariable y ecuaciones diferenciales ordinarias.",
+                "pre": ["MAT2"]
+            },
+            "ED1": {
+                "name": "Estructuras de Datos I",
+                "desc": "Listas, pilas, colas, árboles binarios y recursión.",
+                "pre": ["PROG2"]
+            },
+            "ARQ": {
+                "name": "Arquitectura de Computadoras",
+                "desc": "Organización básica, ensamblador, memoria y CPU.",
+                "pre": []
+            }
         },
-        {
-            "id": "FIS2",
-            "name": "Física II",
-            "semester": 2,
-            "description": "Electromagnetismo.",
-            "prerequisites": ["FIS1", "MAT1"]
+        "4": {
+            "SO1": {
+                "name": "Sistemas Operativos I",
+                "desc": "Procesos, hilos, planificación, memoria virtual.",
+                "pre": ["ARQ", "PROG2"]
+            },
+            "ED2": {
+                "name": "Estructuras de Datos II",
+                "desc": "Árboles balanceados, grafos, hashing.",
+                "pre": ["ED1"]
+            },
+            "BD1": {
+                "name": "Bases de Datos I",
+                "desc": "Modelo relacional, SQL, normalización.",
+                "pre": ["PROG2"]
+            }
+        },
+        "5": {
+            "ALGO": {
+                "name": "Algoritmos y Complejidad",
+                "desc": "Análisis de algoritmos, recursión, divide y conquista, greedy.",
+                "pre": ["ED2", "MAT3"]
+            },
+            "RED1": {
+                "name": "Redes de Computadoras I",
+                "desc": "Modelos OSI/TCP-IP, enlace, capa de red.",
+                "pre": []
+            },
+            "INGSOF": {
+                "name": "Ingeniería de Software",
+                "desc": "Ciclo de vida, requisitos, UML, metodologías ágiles.",
+                "pre": []
+            }
+        },
+        "6": {
+            "BD2": {
+                "name": "Bases de Datos II",
+                "desc": "Transacciones, concurrencia, optimización, NoSQL.",
+                "pre": ["BD1"]
+            },
+            "SO2": {
+                "name": "Sistemas Operativos II",
+                "desc": "Sistemas distribuidos, seguridad, sistemas de archivos avanzados.",
+                "pre": ["SO1"]
+            },
+            "WEB1": {
+                "name": "Desarrollo Web I",
+                "desc": "HTML, CSS, JavaScript, frontend moderno.",
+                "pre": []
+            }
+        },
+        "7": {
+            "IA1": {
+                "name": "Inteligencia Artificial I",
+                "desc": "Búsqueda, lógica, aprendizaje automático básico.",
+                "pre": ["ALGO", "PROG2"]
+            },
+            "SEG": {
+                "name": "Seguridad Informática",
+                "desc": "Criptografía, ataques, firewalls, ética hacker.",
+                "pre": []
+            },
+            "WEB2": {
+                "name": "Desarrollo Web II",
+                "desc": "Backend, APIs REST, bases de datos en web.",
+                "pre": ["WEB1", "BD1"]
+            }
+        },
+        "8": {
+            "PROY1": {
+                "name": "Proyecto de Software I",
+                "desc": "Desarrollo de proyecto en equipo (primera parte).",
+                "pre": []
+            },
+            "CLOUD": {
+                "name": "Computación en la Nube",
+                "desc": "AWS/Azure/GCP, contenedores, serverless.",
+                "pre": []
+            },
+            "TICS": {
+                "name": "Tópicos en Tecnologías de la Información",
+                "desc": "Tendencias actuales (IA generativa, blockchain, etc.).",
+                "pre": []
+            }
+        },
+        "9": {
+            "PROY2": {
+                "name": "Proyecto de Software II",
+                "desc": "Continuación y entrega del proyecto final.",
+                "pre": ["PROY1"]
+            },
+            "ETICA": {
+                "name": "Ética y Legislación en Informática",
+                "desc": "Propiedad intelectual, privacidad, regulaciones.",
+                "pre": []
+            }
+        },
+        "10": {
+            "EMPRE": {
+                "name": "Emprendimiento Tecnológico",
+                "desc": "Modelos de negocio, startups, pitch.",
+                "pre": []
+            },
+            "TESIS": {
+                "name": "Trabajo Final de Grado",
+                "desc": "Investigación o desarrollo aplicado.",
+                "pre": []
+            }
         }
-    ]
+    }
 }
+

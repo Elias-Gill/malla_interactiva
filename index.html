@@ -1,17 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Malla Curricular</title>
-        <style>
-        #graph {
-            width: 100%;
-            height: 100vh;
-        }
-        </style>
-    </head>
-    <body>
-        <div id="graph"></div>
-        <script type="module" src="/src/index.js"></script>
-    </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo Grafo Materias</title>
+  <style>
+    #graph-container {
+      width: 80%;
+      height: 80vh;
+      border: 1px solid #ccc;
+        margin: auto;
+    }
+  </style>
+
+  <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+</head>
+<body>
+
+  <h2>Plan de estudios - Ingeniería Informática</h2>
+  <div id="graph-container"></div>
+
+  <script src="/src/graph_lib.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        // Este es el JSON que normalmente viene de la API del backend
+        const planData = await fetch('/src/data/example-curriculum.json').then(r => r.json())
+        renderGraph(planData, "graph-container");
+    })
+  </script>
+
+</body>
 </html>
