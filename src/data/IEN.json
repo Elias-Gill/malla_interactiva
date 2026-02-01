@@ -24,7 +24,7 @@
         "desc":"Matrices, espacios vectoriales, transformaciones lineales",
         "prerequisites":[]
     },
-    "geometría analitica y vectores":{
+    "geometria analitica y vectores":{
         "name":"Geometría Analítica y Vectores",
         "semester":1,
         "credits":5,
@@ -57,8 +57,63 @@
         "credits":3,
         "required_credits": 0,
         "weekly_hours":3,
-        "desc":"Inecuaciones, Límites, Cálculo diferencial",
+        "desc":"Seguridad en el trabajo, técnicas de previsión, accidentes, equipos de prevención",
         "prerequisites":[]
+    },
+    "algoritmo":{
+        "name":"Algoritmo",
+        "semester":2,
+        "credits":5,
+        "required_credits": 0,
+        "weekly_hours":5,
+        "desc":"Resolución de problemas con algoritmos de computadora",
+        "prerequisites":["algebra lineal"]
+    },
+    "calculo II":{
+        "name":"Cálculo II",
+        "semester":2,
+        "credits":6,
+        "required_credits": 0,
+        "weekly_hours":6,
+        "desc":"Cálculo Integral, Series y Cálculo Multivariable",
+        "prerequisites":["calculo I","geometria analitica y vectores"]
+    },
+    "fisica I":{
+        "name":"Física I",
+        "semester":2,
+        "credits":8,
+        "required_credits": 0,
+        "weekly_hours":8,
+        "desc":"Mecánica: Cinemática, Dinámica, Trabajo, Energía y Potencia",
+        "prerequisites":["calculo I"]
+    },
+    "fisica II":{
+        "name":"Física II",
+        "semester":2,
+        "credits":8,
+        "required_credits": 0,
+        "weekly_hours":8,
+        "desc":"Electromagnetismo",
+        "prerequisites":["calculo I"]
+    },
+    "electrotecnica":{
+        "name":"Electrotecnia",
+        "semester":2,
+        "credits":5,
+        "required_credits": 0,
+        "weekly_hours":5,
+        "desc":"Conceptos básicos de la Electricidad",
+        "prerequisites":["algebra lineal"]
+    },
+    "diseño asistido por computadoras":{
+        "name":"Diseño Asistido por Computadoras",
+        "semester":2,
+        "credits":5,
+        "required_credits": 0,
+        "weekly_hours":5,
+        "desc":"Elaboración de dibujos técnicos con herramientas informáticas",
+        "prerequisites":["dibujo tecnico"]
     }
+
   }
 }
