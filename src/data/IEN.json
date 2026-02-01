@@ -332,6 +332,80 @@
       "weekly_hours": 7,
       "desc": "Maquinas rotatorias, síncronas, asíncronas y a conmutador de corriente continua",
       "prerequisites": ["conversion de energia electrica I"]
+    },
+    "maquinas termicas": {
+      "name": "Máquinas Térmicas",
+      "semester": 7,
+      "credits": 6,
+      "required_credits": 0,
+      "weekly_hours": 6,
+      "desc": "Generalidades de máquinas y motores térmicos",
+      "prerequisites": [
+        "sistemas de control I",
+        "fisica VII",
+        "conversion de energia electrica II"
+      ]
+    },
+    "maquinas hidraulicas": {
+      "name": "Máquinas Hidráulicas",
+      "semester": 7,
+      "credits": 6,
+      "required_credits": 0,
+      "weekly_hours": 6,
+      "desc": "Generalidades de máquinas hidráulicas",
+      "prerequisites": [
+        "sistemas de control I",
+        "fisica VIII",
+        "conversion de energia electrica II"
+      ]
+    },
+    "transporte y distribucion de energia II": {
+      "name": "Transporte y Distribución de Energía II",
+      "semester": 7,
+      "credits": 5,
+      "required_credits": 0,
+      "weekly_hours": 5,
+      "desc": "Transporte de hidrocarburos",
+      "prerequisites": ["transporte y distribucion de energia I", "fisica VII"]
+    },
+    "calor y frio industrial": {
+      "name": "Calor y Frío Industrial",
+      "semester": 7,
+      "credits": 4,
+      "required_credits": 0,
+      "weekly_hours": 4,
+      "desc": "Balances térmicos",
+      "prerequisites": ["sistemas de control I", "fisica VII"]
+    },
+    "tecnicas de operacion y mantenimiento": {
+      "name": "Técnicas de Operación y Mantenimiento",
+      "semester": 7,
+      "credits": 5,
+      "required_credits": 0,
+      "weekly_hours": 5,
+      "desc": "Objetivos, organización, técnicas, costos del mantenimiento, ",
+      "prerequisites": ["sistemas de control I"]
+    },
+    "refino": {
+      "name": "Refino",
+      "semester": 7,
+      "credits": 4,
+      "required_credits": 0,
+      "weekly_hours": 4,
+      "desc": "Perspectivas mundiales, combustibles fósiles, refino del crudo",
+      "prerequisites": ["transporte y distribucion de energia I"]
+    },
+    "energias renovables": {
+      "name": "Energías Renovables",
+      "semester": 7,
+      "credits": 5,
+      "required_credits": 0,
+      "weekly_hours": 5,
+      "desc": "Energía solar, biomasa, eólica, hidráulica",
+      "prerequisites": [
+        "transporte y distribucion de energia I",
+        "generacion de energia electrica"
+      ]
     }
   }
 }
