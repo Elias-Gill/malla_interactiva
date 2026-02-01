@@ -139,6 +139,7 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
       "name": "Matemática I",
       "semester": 1,
       "credits": 5,
+      "weekly_hours": 5, 
       "desc": "Álgebra básica, conjuntos, funciones y sistemas de ecuaciones.",
       "prerequisites": []
     },
@@ -148,6 +149,7 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
     "matematica II": {
       "name": "Programación I",
       "semester": 2,
+      "weekly_hours": 5, 
       "credits": 4,
       "desc": "Mas matematica aburrida",
       "prerequisites": ["matematica I"]
