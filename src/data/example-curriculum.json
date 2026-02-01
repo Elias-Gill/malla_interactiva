@@ -11,6 +11,7 @@
       "name": "Matemática I",
       "semester": 1,
       "credits": 5,
+      "required_credits": 5,
       "weekly_hours": 5, 
       "desc": "Álgebra básica, conjuntos, funciones y sistemas de ecuaciones.",
       "prerequisites": []
@@ -21,6 +22,7 @@
       "semester": 1,
       "weekly_hours": 5, 
       "credits": 4,
+      "required_credits": 5,
       "desc": "Algoritmos básicos, estructuras de control y tipos de datos.",
       "prerequisites": []
     },
@@ -30,6 +32,7 @@
       "semester": 1,
       "weekly_hours": 5, 
       "credits": 3,
+      "required_credits": 5,
       "desc": "Lógica proposicional, predicados y razonamiento formal.",
       "prerequisites": []
     },
@@ -39,6 +42,7 @@
       "semester": 2,
       "weekly_hours": 5, 
       "credits": 5,
+      "required_credits": 5,
       "desc": "Cálculo diferencial e integral en una variable.",
       "prerequisites": ["matematica I"]
     },
@@ -48,6 +52,7 @@
       "semester": 2,
       "weekly_hours": 5, 
       "credits": 4,
+      "required_credits": 5,
       "desc": "Estructuras de datos, recursividad y modularización.",
       "prerequisites": ["programacion I"]
     },
@@ -57,6 +62,7 @@
       "semester": 2,
       "weekly_hours": 5, 
       "credits": 3,
+      "required_credits": 5,
       "desc": "Cinemática y dinámica clásica.",
       "prerequisites": ["matematica I"]
     },
@@ -66,6 +72,7 @@
       "semester": 3,
       "weekly_hours": 5, 
       "credits": 4,
+      "required_credits": 5,
       "desc": "Listas, pilas, colas, árboles y grafos.",
       "prerequisites": ["programacion II", "logica computacional"]
     },
@@ -75,6 +82,7 @@
       "semester": 3,
       "weekly_hours": 5, 
       "credits": 3,
+      "required_credits": 5,
       "desc": "Electricidad, magnetismo y ondas.",
       "prerequisites": ["fisica I", "matematica II"]
     },
@@ -84,6 +92,7 @@
       "semester": 3,
       "weekly_hours": 5, 
       "credits": 4,
+      "required_credits": 5,
       "desc": "Complejidad temporal y espacial, notación O grande.",
       "prerequisites": ["estructuras de datos", "matematica II"]
     }

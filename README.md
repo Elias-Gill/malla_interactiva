@@ -119,6 +119,9 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
   + Los `prerequisites` son arrays de IDs de materias que deben cursarse previamente
   + Todos los IDs referenciados en `prerequisites` deben existir en la malla
   + Para materias sin prerrequisitos, usar array vacío `[]`
+- **Creditos**:
+  + `required_credits` representa los creditos necesarios para habilitar una materia
+  + `credits` representa los creditos que dicha materia suma al ser completada
 - **Organización**:
   + Mantener las materias ordenadas por semestre dentro del JSON
   + Asegurar que `semester` sea un número entre 1 y `totalSemestres`
@@ -139,6 +142,7 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
       "name": "Matemática I",
       "semester": 1,
       "credits": 5,
+      "required_credits": 5,
       "weekly_hours": 5, 
       "desc": "Álgebra básica, conjuntos, funciones y sistemas de ecuaciones.",
       "prerequisites": []
@@ -151,6 +155,7 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
       "semester": 2,
       "weekly_hours": 5, 
       "credits": 4,
+      "required_credits": 5,
       "desc": "Mas matematica aburrida",
       "prerequisites": ["matematica I"]
     },
