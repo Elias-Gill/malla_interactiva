@@ -3,15 +3,43 @@
     "id": "IIN",
     "name": "Ingeniería Informática",
     "totalSemestres": 10,
-    "totalCreditos": 
+    "totalCredits": 337
   },
 
   "subjects": {
-    "algoritmos I": {
+    "algoritmos y estructura de datos I": {
       "name": "Algoritmos y Estructura de Datos I",
       "semester": 1,
       "credits": 9,
-      "desc": "TODO crear descripcion",
+      "weekly_hours": 9,
+      "desc": "Introducción a Algoritmos, construir, verificar y evaluar algoritmos.",
+      "prerequisites": []
+    },
+
+    "emprendedorismo": {
+      "name": "Emprendedorismo",
+      "semester": 1,
+      "credits": 4,
+      "weekly_hours": 4,
+      "desc": "Desarrollar las competencias inherentes al rol de un profesional emprendedor.",
+      "prerequisites": []
+    },
+
+    "expresion oral y escrita": {
+      "name": "Expresión Oral y Escrita",
+      "semester": 1,
+      "credits": 4,
+      "weekly_hours": 4,
+      "desc": "Análisis de gramática y ortografía. Historia del desarrollo del lenguaje español.",
+      "prerequisites": []
+    },
+
+    "fundamentos de matematica": {
+      "name": "Fundamentos de Matemática",
+      "semester": 1,
+      "credits": 7,
+      "weekly_hours": 7,
+      "desc": "Geometría Analítica. Métodos Algebráicos. Sistemas de coordenadas cartesianas y polares.",
       "prerequisites": []
     },
 
