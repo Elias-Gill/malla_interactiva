@@ -113,18 +113,19 @@
       "credits": 7,
       "weekly_hours": 7,
       "required_credits": 0,
-      "desc": "",
-      "prerequisites": ["algoritmos y estructuras de datos I"]
+      "desc": "Programación estructurada y modular. Lenguaje C.",
+      "prerequisites": ["matematica discreta", "algoritmos y estructuras de datos I"]
     },
 
-    ... mas materias
-
-    "matematica II": {
-      "name": "Programación I",
+    "organizacion y arquitectura de computadoras II": {
+      "name": "Organización y Arquitectura de Computadoras II",
       "semester": 2,
-      "credits": 4,
-      "desc": "Mas matematica aburrida",
-      "prerequisites": ["matematica I"]
-    },
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Funcionamiento de los sistemas digitales avanzados y las computadoras. ",
+      "prerequisites": ["matematica discreta", "algoritmos y estructuras de datos I"]
+    }
+
   }
 }
