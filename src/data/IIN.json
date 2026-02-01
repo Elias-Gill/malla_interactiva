@@ -12,6 +12,7 @@
       "semester": 1,
       "credits": 9,
       "weekly_hours": 9,
+      "required_credits": 0,
       "desc": "Introducción a Algoritmos, construir, verificar y evaluar algoritmos.",
       "prerequisites": []
     },
@@ -21,6 +22,7 @@
       "semester": 1,
       "credits": 4,
       "weekly_hours": 4,
+      "required_credits": 0,
       "desc": "Desarrollar las competencias inherentes al rol de un profesional emprendedor.",
       "prerequisites": []
     },
@@ -30,6 +32,7 @@
       "semester": 1,
       "credits": 4,
       "weekly_hours": 4,
+      "required_credits": 0,
       "desc": "Análisis de gramática y ortografía. Historia del desarrollo del lenguaje español.",
       "prerequisites": []
     },
@@ -39,8 +42,79 @@
       "semester": 1,
       "credits": 7,
       "weekly_hours": 7,
+      "required_credits": 0,
       "desc": "Geometría Analítica. Métodos Algebráicos. Sistemas de coordenadas cartesianas y polares.",
       "prerequisites": []
+    },
+
+    "matematica discreta": {
+      "name": "Matemática Discreta",
+      "semester": 1,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Teoría de conjuntos. Relaciones y operaciones. Álgebra de Boole.",
+      "prerequisites": []
+    },
+
+    "organizacion y arquitectura de computadoras I": {
+      "name": "Organización y Arquitectura de Computadoras I",
+      "semester": 1,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Estudio teórico de los circuitos lógicos en todas sus modalidades.",
+      "prerequisites": []
+    },
+
+    "ingles": {
+      "name": "Inglés",
+      "semester": 2,
+      "credits": 4,
+      "weekly_hours": 4,
+      "required_credits": 0,
+      "desc": "Estudio del idioma inglés, vocabulario y gramática.",
+      "prerequisites": []
+    },
+
+    "algebra lineal": {
+      "name": "Álgebra Lineal",
+      "semester": 2,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Matrices. Operaciones con matrices.",
+      "prerequisites": ["fundamentos de matematica", "matematica discreta"]
+    },
+
+    "algoritmos y estructuras de datos II": {
+      "name": "Algoritmos y Estructura de Datos II",
+      "semester": 2,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Funciones, procedimientos y estructuras abstractas de datos.",
+      "prerequisites": ["algoritmos y estructuras de datos I"]
+    },
+
+    "calculo I": {
+      "name": "Cálculo I",
+      "semester": 2,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Funciones. Dominio y rango. Límites. Derivadas. Diferenciales.",
+      "prerequisites": ["fundamentos de matematica"]
+    },
+
+    "lenguajes de programacion I": {
+      "name": "Lenguajes de Programación I",
+      "semester": 2,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "",
+      "prerequisites": ["algoritmos y estructuras de datos I"]
     },
 
     ... mas materias
