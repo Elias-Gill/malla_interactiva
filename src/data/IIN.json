@@ -2,7 +2,7 @@
   "career": {
     "id": "IIN",
     "name": "Ingeniería Informática",
-    "totalSemestres": 10,
+    "totalSemesters": 10,
     "totalCredits": 337
   },
 
@@ -515,6 +515,16 @@
       "required_credits": 268,
       "desc": "Electiva VII",
       "prerequisites": []
+    },
+
+    "diseño de compiladores": {
+      "name": "Diseño de Compiladores",
+      "semester": 10,
+      "credits": 7,
+      "weekly_hours": 7,
+      "required_credits": 0,
+      "desc": "Electiva VII",
+      "prerequisites": ["algoritmos y estructuras de datos III", "estructura de los lenguajes"]
     }
 
   }
