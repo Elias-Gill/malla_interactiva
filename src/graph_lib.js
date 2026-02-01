@@ -178,7 +178,7 @@ let semestersCount = 0;
 
 // Prepara los datos del grafo: nodos y aristas
 function prepareGraphData(data) {
-  semestersCount = data.career.totalSemestres;
+  semestersCount = data.career.totalSemesters;
 
   const subjectsBySemester = _groupSubjectsBySemester(
     data.subjects,
