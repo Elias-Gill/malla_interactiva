@@ -2,7 +2,8 @@
   "career": {
     "id": "IIN",
     "name": "Ingeniería Informática",
-    "totalSemestres": 3
+    "totalSemesters": 3,
+    "totalCredits": 300
   },
 
   "subjects": {

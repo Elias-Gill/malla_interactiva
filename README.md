@@ -130,7 +130,8 @@ Cada carrera debe tener su propio archivo JSON con las siglas de la carrera en `
   "career": {
     "id": "IIN",
     "name": "Ingeniería Informática",
-    "totalSemestres": 3
+    "totalSemesters": 3,
+    "totalCredits": 300
   },
 
   "subjects": {
