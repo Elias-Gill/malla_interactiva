@@ -477,8 +477,8 @@
       "desc": "Dirección de proyectos, métodos numéricos",
       "prerequisites": ["economia y finanzas"]
     },
-    "energeticos": {
-      "name": "Energeticos",
+    "almacenamiento de energia": {
+      "name": "Almacenamiento de Energía",
       "semester": 9,
       "credits": 5,
       "required_credits": 0,
@@ -489,8 +489,8 @@
         "economia de las energias renovables"
       ]
     },
-    "almacenamiento de energia": {
-      "name": "Almacenamiento de Energía",
+    "politica energetica": {
+      "name": "Política Energética",
       "semester": 9,
       "credits": 5,
       "required_credits": 0,
@@ -502,34 +502,22 @@
         "macroeconomia y finanzas publicas"
       ]
     },
-    "politica energetica": {
-      "name": "Política Energética",
-      "semester": 9,
-      "credits": 5,
-      "required_credits": 0,
-      "weekly_hours": 5,
-      "desc": "Energía y sostenibilidad, indicadores energéticos",
-      "prerequisites": [
-        "mercado y transporte de la energia electrica",
-        "macroeconomia y finanzas publicas"
-      ]
-    },
     "sustentabilidad mundial y regional": {
       "name": "Sustentabilidad Mundial y Regional",
       "semester": 9,
       "credits": 4,
       "required_credits": 0,
       "weekly_hours": 4,
-      "desc": "Matemática financiera, ingeniería económica",
+      "desc": "Energía y sostenibilidad, indicadores energéticos",
       "prerequisites": ["macroeconomia y finanzas publicas"]
     },
     "administracion y recursos humanos": {
       "name": "Administración y Recursos Humanos",
       "semester": 9,
-      "credits": 5,
+      "credits": 3,
       "required_credits": 0,
-      "weekly_hours": 5,
-      "desc": "Supervivencia y productividad, planeamiento estratégico",
+      "weekly_hours": 3,
+      "desc": "Matemática financiera, ingeniería económica",
       "prerequisites": ["prevision y seguridad en el trabajo"]
     },
     "costos e ingenieria economica": {
@@ -538,16 +526,16 @@
       "credits": 5,
       "required_credits": 0,
       "weekly_hours": 5,
-      "desc": "Comportamiento organizacional, administración de recursos humanos",
+      "desc": "Supervivencia y productividad, planeamiento estratégico",
       "prerequisites": ["gerenciamiento de proyectos energeticos"]
     },
     "normalizacion y calidad industrial": {
       "name": "Normalización y Calidad Industrial",
       "semester": 9,
-      "credits": 5,
+      "credits": 3,
       "required_credits": 0,
-      "weekly_hours": 5,
-      "desc": "Calidad industrial, normativas y estándares",
+      "weekly_hours": 3,
+      "desc": "Comportamiento organizacional, administración de recursos humanos",
       "prerequisites": []
     }
   }
