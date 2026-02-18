@@ -441,30 +441,10 @@
       "weekly_hours": 6,
       "desc": "",
       "prerequisites": [
-        "algebra",
-        "calculo I",
-        "calculo II",
         "calculo III ecuaciones diferenciales",
-        "calculo IV vectorial",
-        "calculo V variable compleja",
-        "calculo VI",
         "circulacion general de la atmosfera",
-        "climatologia I",
         "climatologia II",
-        "dinamica de la atmosfera I",
-        "fisica I",
-        "fisica II",
-        "fisica III optica ondas",
-        "fisica IV calor",
-        "fisica V electromagnetismo",
-        "fisica de la atmosfera I",
-        "fisica de la atmosfera II",
         "geometria analitica y vectores",
-        "instrumentos meteorologicos y metodos de observacion",
-        "introduccion a las ciencias atmosfericas",
-        "laboratorio sinoptico",
-        "mecanica de fluidos",
-        "meteorologia sinoptica I",
         "meteorologia tropical",
         "metodos estadisticos en ciencias atmosfericas",
         "metodos numericos en ciencias de la atmosfera",
@@ -475,11 +455,7 @@
         "optativa 4",
         "optativa 5",
         "optativa 6",
-        "probabilidad y estadistica",
-        "programacion",
-        "quimica",
-        "quimica de la atmosfera",
-        "sensores remotos"
+        "quimica de la atmosfera"
       ]
     }
   }
