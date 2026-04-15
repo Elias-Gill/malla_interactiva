@@ -235,3 +235,26 @@ Revisa la consola del navegador para errores y verifica que:
 - El contenedor del grafo existe en el DOM
 - Vis.js está cargado correctamente
 - Actualizaste el `index.html` correctamente
+
+# Cómo utilizar como librería
+
+1. Incluye el CDN de vis-network y el script de la librería:
+```html
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<script src="/ruta/a/graph_lib.js"></script>
+```
+
+2. Cargá tu JSON (desde API o archivo) y pasa el id del elemento html que sera el container del
+   grafo:
+
+```javascript
+prepareGraphData(tuJson);
+renderGraph("id-del-container");
+```
+
+Para un ejemplo completo de uso, revisá el archivo `index.html` incluido en el proyecto.
+La obtención del JSON puede ser mediante fetch a una API o leyendo un archivo local.
+
+Los archivos con las mallas de todas las carreras de la FP-UNA se encuentran en formato JSON se
+dentro de la carpeta `src/data/`.
+Sientete libre de copiar los archivos que necesites
