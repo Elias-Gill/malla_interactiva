@@ -5,20 +5,27 @@ const DIMENSIONS = {
   NODE_START_Y: 80, // Posición vertical inicial de los nodos
   NODE_SPACING_Y: 90, // Separación vertical entre nodos
   NODE_MARGIN: 10, // Margen interno de los nodos
+  NODE_MAX_WIDTH: 220, // ≈ 28–32 caracteres dependiendo de la fuente
 };
 
 // ================= CONSTANTES DE COLORES =================
 
 const COLORS = {
   NODE_TEXT: "#1f2937",
-  NODE_BG: "#f9fafb",
+  NODE_BG_ODD: "#f591b2", // semestres impares (1,3,5...)
+  NODE_BG_EVEN: "#9dc6ac", // semestres pares   (2,4,6...)
   NODE_BORDER: "#6b7280",
-  NODE_HIGHLIGHT_BG: "#fef3c7",
-  NODE_HIGHLIGHT_BORDER: "#f59e0b",
-  NODE_CHILD_BG: "#dbeafe",
-  NODE_CHILD_BORDER: "#3b82f6",
-  EDGE_NORMAL: "#9ca3af",
-  EDGE_HOVER: "#111827",
+
+  NODE_HIGHLIGHT_BG: "#b9aeda",
+  NODE_HIGHLIGHT_BORDER: "#6b7280",
+
+  NODE_CHILD_BG: "#60a5fa",
+  NODE_CHILD_BORDER: "#6b7280",
+
+  NODE_PARENT_BG: "#fbbf24",
+  NODE_PARENT_BORDER: "#6b7280",
+
+  EDGE_NORMAL: "#232323",
   EDGE_OPACITY: 0.8,
 };
 
@@ -40,42 +47,47 @@ const NODE_COMMON_CONFIG = {
     size: FONTS.NODE_SIZE,
     face: FONTS.NODE_FACE,
     color: COLORS.NODE_TEXT,
+    multi: true, // permite multilínea
   },
-  borderWidth: 2,
-  color: {
-    background: COLORS.NODE_BG,
-    border: COLORS.NODE_BORDER,
-    highlight: {
-      background: COLORS.NODE_HIGHLIGHT_BG,
-      border: COLORS.NODE_HIGHLIGHT_BORDER,
-    },
+  borderWidth: 1,
+  widthConstraint: {
+    maximum: DIMENSIONS.NODE_MAX_WIDTH, // fuerza wrap
   },
 };
 
 const EDGES_COMMON_CONFIG = {
-  arrows: "to",
+  arrows: {
+    to: {
+      enabled: true,
+      scaleFactor: 0.8,
+      type: "arrow",
+    },
+  },
   color: {
     color: COLORS.EDGE_NORMAL,
     opacity: COLORS.EDGE_OPACITY,
-    highlight: COLORS.EDGE_HOVER,
+    highlight: COLORS.EDGE_NORMAL,
+    hover: COLORS.EDGE_NORMAL, // Añadir estado hover explícito
+    inherit: false, // Importante: evitar herencia de colores
   },
-  width: 1.5,
-  hoverWidth: 3,
+  width: 1,
+  hoverWidth: 1,
+  selectionWidth: 0, // Evitar cambio de ancho al seleccionar
 };
 
 const SEMESTERS_TITLE_STYLE = {
-  y: 20,
+  y: 10,
   fixed: true,
   physics: false,
   font: {
-    size: 18,
+    size: 28,
     bold: true,
     color: "#374151",
   },
   shape: "text",
 };
 
-// ================= ESTILOS DE NODOS =================
+// ================= ESTILOS DE NODOS (para hover / parent / child) =================
 
 const NODE_STYLE_BASE = {
   font: {
@@ -83,20 +95,12 @@ const NODE_STYLE_BASE = {
     bold: false,
     size: FONTS.NODE_SIZE,
   },
-  borderWidth: 2,
+  borderWidth: 1, // valor fijo para todos los estados
   opacity: 1,
 };
 
-const NODE_STYLE_DEFAULT = {
-  color: {
-    background: COLORS.NODE_BG,
-    border: COLORS.NODE_BORDER,
-  },
-  ...NODE_STYLE_BASE,
-};
-
 const NODE_STYLE_DEFAULT_FADED = {
-  opacity: 0.2,
+  opacity: 0.12,
 };
 
 const NODE_STYLE_HOVER = {
@@ -109,20 +113,19 @@ const NODE_STYLE_HOVER = {
     bold: true,
     size: FONTS.NODE_SIZE + 2,
   },
-  borderWidth: 3,
+  // borderWidth ya viene de NODE_STYLE_BASE → no se sobreescribe
   opacity: 1,
 };
 
 const NODE_STYLE_PARENT = {
   color: {
-    background: COLORS.NODE_HIGHLIGHT_BG,
-    border: COLORS.NODE_HIGHLIGHT_BORDER,
+    background: COLORS.NODE_PARENT_BG,
+    border: COLORS.NODE_PARENT_BORDER,
   },
   font: {
     ...NODE_STYLE_BASE.font,
     bold: true,
   },
-  borderWidth: 3,
   opacity: 1,
 };
 
@@ -135,35 +138,8 @@ const NODE_STYLE_CHILD = {
     ...NODE_STYLE_BASE.font,
     bold: true,
   },
-  borderWidth: 3,
+  // borderWidth ya viene de NODE_STYLE_BASE
   opacity: 1,
-};
-
-// ================= ESTILOS DE ARISTAS (EDGES) =================
-
-const EDGE_STYLE_DEFAULT = {
-  color: COLORS.EDGE_NORMAL,
-  opacity: COLORS.EDGE_OPACITY,
-  width: 1.5,
-  hidden: false,
-};
-
-const EDGE_STYLE_HOVER = {
-  color: COLORS.EDGE_HOVER,
-  opacity: 1,
-  width: 2.5,
-};
-
-const EDGE_STYLE_PARENT = {
-  color: COLORS.NODE_HIGHLIGHT_BORDER,
-  opacity: 1,
-  width: 3,
-};
-
-const EDGE_STYLE_CHILD = {
-  color: COLORS.NODE_CHILD_BORDER,
-  opacity: 1,
-  width: 3,
 };
 
 // ================= VARIABLES GLOBALES =================
@@ -176,7 +152,6 @@ let semestersCount = 0;
 
 // ===================== PUBLIC API =====================
 
-// Prepara los datos del grafo: nodos y aristas
 function prepareGraphData(data) {
   semestersCount = data.career.totalSemesters;
 
@@ -193,7 +168,6 @@ function prepareGraphData(data) {
   edges = new vis.DataSet(_createEdges(allSubjects));
 }
 
-// Renderiza el grafo en el elemento con el ID dado
 function renderGraph(elementId) {
   const element = document.getElementById(elementId);
   if (!element) return;
@@ -207,7 +181,6 @@ function renderGraph(elementId) {
 
 // ================= FUNCIONES AUXILIARES =================
 
-// Crea nodos de materias organizados por semestre
 function _createSubjectNodes(semesters) {
   const allSubjectsLocal = {};
   const nodesArray = [];
@@ -229,7 +202,6 @@ function _createSubjectNodes(semesters) {
         pre: subject.prerequisites || [],
       };
 
-      // Usar configuración común, añadiendo propiedades específicas por nodo
       nodesArray.push({
         id,
         label: subject.name,
@@ -244,7 +216,6 @@ function _createSubjectNodes(semesters) {
   return { allSubjects: allSubjectsLocal, nodesArray };
 }
 
-// Crea aristas entre materias según pre-requisitos
 function _createEdges(allSubjectsLocal) {
   const edgesArray = [];
 
@@ -261,7 +232,6 @@ function _createEdges(allSubjectsLocal) {
   return edgesArray;
 }
 
-// Crea los títulos para cada semestre
 function _createSemesterTitles() {
   const titles = [];
 
@@ -277,8 +247,28 @@ function _createSemesterTitles() {
   return titles;
 }
 
-// Opciones para la visualización de vis.js
 function _createVisOptions() {
+  const groups = {};
+
+  for (let i = 1; i <= semestersCount; i++) {
+    const isEven = i % 2 === 0;
+    groups[`sem${i}`] = {
+      color: {
+        background: isEven ? COLORS.NODE_BG_EVEN : COLORS.NODE_BG_ODD,
+        border: COLORS.NODE_BORDER,
+        highlight: {
+          background: COLORS.NODE_HIGHLIGHT_BG,
+          border: COLORS.NODE_HIGHLIGHT_BORDER,
+        },
+        hover: {
+          background: COLORS.NODE_HIGHLIGHT_BG,
+          border: COLORS.NODE_HIGHLIGHT_BORDER,
+        },
+      },
+      font: { color: COLORS.NODE_TEXT },
+    };
+  }
+
   return {
     interaction: {
       hover: true,
@@ -287,92 +277,113 @@ function _createVisOptions() {
     },
     physics: false,
     layout: { hierarchical: false },
-    groups: Object.fromEntries(
-      Array.from({ length: semestersCount }, (_, i) => [
-        `sem${i + 1}`,
-        {
-          color: {
-            background: COLORS.NODE_BG,
-            border: COLORS.NODE_BORDER,
-            highlight: {
-              background: COLORS.NODE_HIGHLIGHT_BG,
-              border: COLORS.NODE_HIGHLIGHT_BORDER,
-            },
-          },
-          font: { color: COLORS.NODE_TEXT },
+    groups,
+    edges: {
+      arrows: {
+        to: {
+          enabled: true,
         },
-      ]),
-    ),
+      },
+      color: {
+        color: COLORS.EDGE_NORMAL,
+        highlight: COLORS.EDGE_NORMAL,
+        hover: COLORS.EDGE_NORMAL,
+        inherit: false, // Doble seguridad: no heredar colores
+      },
+    },
   };
 }
 
 // ================= EVENTOS =================
 
-// Configura eventos para el grafo (hover y blur)
 function _setupNetworkEvents(net, allSubs, nodesDs, edgesDs) {
-  net.on("hoverNode", (params) => {
-    const id = params.node;
-    const parents = _getAllParents(id, allSubs);
-    const children = _getDirectChildren(id, allSubs);
+  const isSemesterTitle = (nodeId) => String(nodeId).startsWith("title-sem-");
+
+  const isTouch = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+  function showRelations(id) {
+    const parents = _getAllParents(id, allSubs); // ancestors
+    const children = _getDirectChildren(id, allSubs); // direct children
     const relatedNodes = new Set([id, ...parents, ...children]);
 
-    // Preparar todos los updates de nodos
     const nodeUpdates = nodesDs.map((node) => {
-      if (node.id === id) {
-        return { id: node.id, ...NODE_STYLE_HOVER };
-      } else if (parents.has(node.id)) {
-        return { id: node.id, ...NODE_STYLE_PARENT };
-      } else if (children.has(node.id)) {
-        return { id: node.id, ...NODE_STYLE_CHILD };
-      } else {
-        return { id: node.id, ...NODE_STYLE_DEFAULT_FADED };
-      }
+      if (String(node.id).startsWith("title-sem-")) return { id: node.id };
+
+      if (node.id === id) return { id: node.id, ...NODE_STYLE_HOVER };
+      if (parents.has(node.id)) return { id: node.id, ...NODE_STYLE_PARENT };
+      if (children.has(node.id)) return { id: node.id, ...NODE_STYLE_CHILD };
+
+      return { id: node.id, ...NODE_STYLE_DEFAULT_FADED };
     });
 
-    // Preparar todas las actualizaciones de estilos de aristas
     const edgeUpdates = edgesDs.map((edge) => {
-      const fromInRelated = relatedNodes.has(edge.from);
-      const toInRelated = relatedNodes.has(edge.to);
-
-      if (fromInRelated && toInRelated) {
-        let style = { ...EDGE_STYLE_HOVER };
-        if (edge.to === id && parents.has(edge.from)) {
-          style = { ...EDGE_STYLE_PARENT };
-        } else if (edge.from === id && children.has(edge.to)) {
-          style = { ...EDGE_STYLE_CHILD };
-        }
-        return {
-          id: edge.id,
-          color: { color: style.color, opacity: style.opacity },
-          width: style.width,
-          hidden: false,
-        };
-      } else {
-        return { id: edge.id, hidden: true };
-      }
+      const fromRelated = relatedNodes.has(edge.from);
+      const toRelated = relatedNodes.has(edge.to);
+      return {
+        id: edge.id,
+        hidden: !(fromRelated && toRelated),
+      };
     });
 
-    // Aplicar batch updates (mejor performance)
-    nodesDs.update(nodeUpdates);
+    nodesDs.update(nodeUpdates.filter((u) => Object.keys(u).length > 1));
     edgesDs.update(edgeUpdates);
-  });
+  }
 
-  net.on("blurNode", () => {
-    // Resetear todos los nodos a estilo por defecto
-    const allNodeUpdates = nodesDs.map((node) => ({
-      id: node.id,
-      ...NODE_STYLE_DEFAULT,
-    }));
+  function resetGraphStyles() {
+    const allNodeUpdates = nodesDs.map((node) => {
+      if (isSemesterTitle(node.id)) return { id: node.id };
+      return { id: node.id, ...NODE_STYLE_BASE, opacity: 1 };
+    });
 
-    // Resetear todas las aristas a estilo por defecto
     const allEdgeUpdates = edgesDs.map((edge) => ({
       id: edge.id,
-      ...EDGE_STYLE_DEFAULT,
+      hidden: false,
     }));
 
-    nodesDs.update(allNodeUpdates);
+    nodesDs.update(allNodeUpdates.filter((u) => Object.keys(u).length > 1));
     edgesDs.update(allEdgeUpdates);
-  });
+  }
+
+  // ================= DESKTOP =================
+  if (!isTouch) {
+    net.on("hoverNode", (params) => {
+      const id = params.node;
+      if (isSemesterTitle(id)) return;
+      showRelations(id);
+    });
+
+    net.on("blurNode", resetGraphStyles);
+
+    net.on("click", (params) => {
+      if (!params.nodes.length) return;
+      const id = params.nodes[0];
+      if (isSemesterTitle(id)) return;
+
+      _openModal(id);
+    });
+  }
+
+  // ================= MOBILE =================
+  if (isTouch) {
+    net.on("selectNode", (params) => {
+      if (!params.nodes.length) return;
+      const id = params.nodes[0];
+      if (isSemesterTitle(id)) return;
+
+      showRelations(id);
+    });
+
+    net.on("deselectNode", resetGraphStyles);
+
+    // long press → modal
+    net.on("hold", (params) => {
+      if (!params.nodes.length) return;
+      const id = params.nodes[0];
+      if (isSemesterTitle(id)) return;
+
+      _openModal(id);
+    });
+  }
 }
 
 // ================= FUNCIONES PARA NODOS RELACIONADOS =================
@@ -420,4 +431,124 @@ function _groupSubjectsBySemester(subjects, count) {
   }
 
   return grouped;
+}
+
+function _openModal(id) {
+  const subject = allSubjects[id];
+  if (!subject) return;
+
+  const existing = document.getElementById("subject-modal-overlay");
+  if (existing) existing.remove();
+
+  // ================= OVERLAY =================
+  const overlay = document.createElement("div");
+  overlay.id = "subject-modal-overlay";
+
+  Object.assign(overlay.style, {
+    position: "fixed",
+    inset: "0",
+    background: "rgba(0,0,0,0.35)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: "9999",
+  });
+
+  // ================= MODAL =================
+  const modal = document.createElement("div");
+
+  Object.assign(modal.style, {
+    width: "min(520px, 92vw)",
+    maxHeight: "85vh",
+    overflowY: "auto",
+    background: "#ffffff",
+    borderRadius: "10px",
+    padding: "20px 22px",
+    boxShadow: "0 12px 32px rgba(0,0,0,0.25)",
+    fontFamily: "Inter, Arial, sans-serif",
+    position: "relative",
+  });
+
+  modal.addEventListener("click", (e) => e.stopPropagation());
+
+  // ================= BOTÓN CERRAR =================
+  const close = document.createElement("button");
+  close.textContent = "✕";
+
+  Object.assign(close.style, {
+    position: "absolute",
+    top: "8px",
+    right: "10px",
+    border: "none",
+    background: "transparent",
+    fontSize: "18px",
+    cursor: "pointer",
+    color: "#374151",
+  });
+
+  close.onclick = () => overlay.remove();
+
+  // ================= CONTENIDO =================
+
+  const title = document.createElement("h2");
+  title.textContent = subject.name;
+
+  Object.assign(title.style, {
+    margin: "0 0 14px 0",
+    fontSize: "20px",
+    color: "#111827",
+  });
+
+  function createRow(label, value) {
+    const row = document.createElement("div");
+    row.innerHTML = `<strong>${label}:</strong> ${value ?? "-"}`;
+
+    Object.assign(row.style, {
+      marginBottom: "6px",
+      fontSize: "14px",
+      color: "#374151",
+    });
+
+    return row;
+  }
+
+  const semester = createRow("Semestre", subject.semester);
+  const credits = createRow("Créditos", subject.credits);
+  const weekly = createRow("Horas semanales", subject.weekly_hours);
+  const required = createRow("Créditos requeridos", subject.required_credits);
+
+  const desc = document.createElement("div");
+  desc.innerHTML = `<strong>Descripción:</strong> ${subject.desc ?? "-"}`;
+
+  Object.assign(desc.style, {
+    marginTop: "10px",
+    fontSize: "14px",
+    lineHeight: "1.4",
+    color: "#1f2937",
+  });
+
+  // ensamblar
+  modal.appendChild(close);
+  modal.appendChild(title);
+  modal.appendChild(semester);
+  modal.appendChild(credits);
+  modal.appendChild(weekly);
+  modal.appendChild(required);
+  modal.appendChild(desc);
+
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  // cerrar al hacer click fuera
+  overlay.addEventListener("click", () => overlay.remove());
+
+  // cerrar con ESC
+  const escHandler = (e) => {
+    if (e.key === "Escape") {
+      overlay.remove();
+      document.removeEventListener("keydown", escHandler);
+    }
+  };
+
+  document.addEventListener("keydown", escHandler);
 }
