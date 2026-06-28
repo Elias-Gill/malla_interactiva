@@ -94,7 +94,7 @@
       "weekly_hours": 7,
       "required_credits": 0,
       "desc": "Funciones, procedimientos y estructuras abstractas de datos.",
-      "prerequisites": ["algoritmos y estructuras de datos I"]
+      "prerequisites": ["algoritmos y estructura de datos I"]
     },
 
     "calculo I": {
@@ -114,7 +114,7 @@
       "weekly_hours": 7,
       "required_credits": 0,
       "desc": "Programación estructurada y modular. Lenguaje C.",
-      "prerequisites": ["matematica discreta", "algoritmos y estructuras de datos I"]
+      "prerequisites": ["matematica discreta", "algoritmos y estructura de datos I"]
     },
 
     "organizacion y arquitectura de computadoras II": {
